@@ -76,9 +76,6 @@ function RegisterPage() {
             value={date} 
             onChange={(e) => setDate(e.target.value)} 
             fullWidth 
-            InputLabelProps={{
-              shrink: true,
-            }}
           />
         </Grid>
         <Grid item xs={12}>

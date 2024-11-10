@@ -16,17 +16,20 @@ function ConsultPage() {
   };
 
   return (
-    <Box sx={{ width: '100%', padding: '16px' }}>
-      <Typography variant="h4" gutterBottom>
+    <Box sx={{ width: '95%', padding: '16px', height: '75vh', display: 'flex', flexDirection: 'column' }}>
+      <Typography variant="h4" align="center" gutterBottom>
         Consultar Registros
       </Typography>
 
       {records.length === 0 ? (
-        <Typography variant="body1" color="textSecondary">
+        <Typography variant="body1" color="textSecondary" align="center">
           Nenhum registro encontrado.
         </Typography>
       ) : (
-        <TableContainer component={Paper}>
+        <TableContainer
+          component={Paper}
+          sx={{ flex: 1, width: '100%', maxHeight: 'calc(100vh - 80px)', overflowY: 'auto' }}
+        >
           <Table>
             <TableHead>
               <TableRow>
