@@ -55,7 +55,6 @@ function RegisterPage() {
             variant="outlined" 
             value={description} 
             onChange={(e) => setDescription(e.target.value)}
-            fullWidth 
           />
         </Grid>
         <Grid item xs={12}>
@@ -65,7 +64,6 @@ function RegisterPage() {
             type="number" 
             value={value} 
             onChange={(e) => setValue(e.target.value)} 
-            fullWidth 
           />
         </Grid>
         <Grid item xs={12}>
@@ -75,7 +73,6 @@ function RegisterPage() {
             type="date" 
             value={date} 
             onChange={(e) => setDate(e.target.value)} 
-            fullWidth 
           />
         </Grid>
         <Grid item xs={12}>

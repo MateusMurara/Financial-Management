@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import './Consult.css';
 
 function ConsultPage() {
   const [records, setRecords] = useState([]);
@@ -15,43 +16,54 @@ function ConsultPage() {
     navigate('/register', { state: { record } });
   };
 
+  const handleDeleteClick = (recordToDelete) => {
+    const updatedRecords = records.filter((record) => record.id !== recordToDelete.id);
+    localStorage.setItem('records', JSON.stringify(updatedRecords));
+    setRecords(updatedRecords);
+  };
+
+  const totalExpenses = records.reduce((total, record) => total + parseFloat(record.value), 0);
+
   return (
-    <Box sx={{ width: '95%', padding: '16px', height: '75vh', display: 'flex', flexDirection: 'column' }}>
-      <Typography variant="h4" align="center" gutterBottom>
+    <Box className="box-container">
+      <Typography variant="h4" className="typography-title">
         Consultar Registros
       </Typography>
-
+  
       {records.length === 0 ? (
-        <Typography variant="body1" color="textSecondary" align="center">
+        <Typography variant="body1" className="no-records-text">
           Nenhum registro encontrado.
         </Typography>
       ) : (
-        <TableContainer
-          component={Paper}
-          sx={{ flex: 1, width: '100%', maxHeight: 'calc(100vh - 80px)', overflowY: 'auto' }}
-        >
+        <TableContainer component={Paper} className="table-container">
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell><strong>Ações</strong></TableCell>
-                <TableCell><strong>Descrição</strong></TableCell>
-                <TableCell><strong>Valor</strong></TableCell>
-                <TableCell><strong>Data</strong></TableCell>
+                <TableCell className="table-header-cell">Ações</TableCell>
+                <TableCell className="table-header-cell">Descrição</TableCell>
+                <TableCell className="table-header-cell">Data</TableCell>
+                <TableCell className="table-header-cell">Valor</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {records.map((record) => (
                 <TableRow key={record.id}>
                   <TableCell>
-                    <Button variant="contained" color="primary" onClick={() => handleEditClick(record)}>
-                      Editar
-                    </Button>
+                    <Button variant="contained" color="primary" onClick={() => handleEditClick(record)}>Editar</Button>
+                    <Button variant="contained" color="error" onClick={() => handleDeleteClick(record)}>Deletar</Button>
                   </TableCell>
                   <TableCell>{record.description}</TableCell>
-                  <TableCell>{record.value.toFixed(2)}</TableCell>
-                  <TableCell>{new Date(record.date).toLocaleDateString()}</TableCell>
+                  <TableCell>{record.date}</TableCell>
+                  <TableCell>{parseFloat(record.value).toFixed(2)}</TableCell>
                 </TableRow>
               ))}
+              <TableRow>
+                <TableCell colSpan={2} />
+                <TableCell className="table-total-cell" style={{ fontWeight: 'bold' }}>Total:</TableCell>
+                <TableCell className="table-total-cell" style={{ fontWeight: 'bold' }}>
+                  {totalExpenses.toFixed(2)}
+                </TableCell>
+              </TableRow>
             </TableBody>
           </Table>
         </TableContainer>
