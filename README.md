@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+Gerenciador de Orçamento Pessoal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto é uma aplicação de gerenciamento de orçamento pessoal desenvolvida em JavaScript e construída com o framework React e a biblioteca de componentes MUI. O sistema permite que o usuário cadastre, edite e consulte registros de despesas e receitas, armazenando essas informações no LocalStorage do navegador.
 
-## Available Scripts
+Índice
+ - Tecnologias Utilizadas
+ - Arquitetura e Decisões de Design
+ - Funcionalidades
+ - Estrutura das Telas
+ - Dificuldades e Soluções
 
-In the project directory, you can run:
+Tecnologias Utilizadas
+ - JavaScript: Linguagem escolhida para o desenvolvimento, como especificado nos requisitos do projeto.
+ - React: Framework utilizado para facilitar o desenvolvimento e componentização.
+ - MUI (Material-UI): Biblioteca de componentes de UI para React, usada para garantir uma interface amigável e ágil de  desenvolver.
 
-### `npm start`
+Arquitetura e Decisões de Design
+    A escolha de React e MUI foi baseada em experiência prévia com essas ferramentas, o que agilizou o desenvolvimento. React oferece uma arquitetura baseada em componentes que facilita a manutenção e escalabilidade do código, enquanto o MUI permitiu rápida criação de componentes estilizados e responsivos, como botões e tabelas.
+    Para armazenamento dos dados, foi utilizado o LocalStorage, que permite salvar informações localmente no navegador e oferece persistência simples e eficaz para pequenos volumes de dados.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Funcionalidades
+ - Cadastro de Registro: Registros de despesas e receitas podem ser cadastrados com uma descrição, valor e data.
+ - Edição de Registro: Possibilidade de atualizar registros já existentes.
+ - Exclusão de Registro: Remoção de registros do LocalStorage.
+ - Visualização de Registros: Exibição de todos os registros cadastrados em uma tabela.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Estrutura das Telas
+ - Tela Home: Apresenta informações básicas do aluno e detalhes da atividade.
+ - Tela de Consulta: Permite visualizar todos os registros cadastrados, exibidos em uma tabela com as colunas:
+     - Descrição: Detalhamento do registro.
+     - Data: Data associada ao registro.
+     - Valor: Valor numérico do registro.
+     - Editar: Botão para carregar o registro na tela de cadastro para edição.
+     - Deletar: Botão para excluir o registro do LocalStorage.
+ - Tela de Cadastro: Contém campos para preencher a descrição, valor e data. Só permite o salvamento caso todos os campos estejam preenchidos. Após o salvamento, o usuário é redirecionado para a tela de consulta.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Dificuldades e Soluções
+Durante o desenvolvimento, algumas dificuldades foram encontradas e solucionadas:
+ - Manuseio do LocalStorage: Adicionar e atualizar dados diretamente no LocalStorage exigiu cuidado com o tratamento de dados, como conversão de tipos e validação de campos.
+ - Redirecionamento e Manutenção de Estado: Garantir que o registro correto fosse carregado na tela de cadastro para edição exigiu o uso de useLocation e useNavigate do React Router, facilitando o compartilhamento de dados entre telas.
+Este projeto, além de cumprir os requisitos da tarefa, serviu para aprimorar habilidades em React e na manipulação do LocalStorage, fortalecendo conhecimentos sobre gerenciamento de estados e navegação em aplicações web.
