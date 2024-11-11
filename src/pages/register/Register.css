@@ -1,0 +1,8 @@
+.register-page-container {
+    width: 100%;
+    padding: 16px;
+}
+  
+.register-page-container .MuiTypography-h4 {
+    margin-bottom: 16px;
+}  

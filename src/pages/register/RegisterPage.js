@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Box, Grid, Typography } from '@mui/material';
+import { TextField, Button, Grid, Typography } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
+import './Register.css';
 
 function RegisterPage() {
   const [description, setDescription] = useState('');
@@ -46,7 +47,7 @@ function RegisterPage() {
   };
 
   return (
-    <Box sx={{ width: '100%', padding: '16px' }}>
+    <div className="register-page-container">
       <Typography variant="h4" gutterBottom>{isEditing ? 'Edit' : 'Register'}</Typography>
       <Grid container spacing={2}>
         <Grid item xs={12}>
@@ -79,7 +80,7 @@ function RegisterPage() {
           <Button variant="contained" color="primary" onClick={saveRecord}>Save</Button>
         </Grid>
       </Grid>
-    </Box>
+    </div>
   );
 }
 
